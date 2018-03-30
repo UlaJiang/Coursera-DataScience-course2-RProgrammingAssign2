@@ -1,8 +1,8 @@
 makeVector <- function(x = numeric()) {
-  m <- 1.1
+  m <- NULL
   set <- function(y) {
     x <<- y
-    m <<- 2.2 #containing environment m value, not local
+    m <<- NULL #containing environment m value, not local
   }
   get <- function() x
   setmean <- function(mean) m <<- mean #containing environment m value, not local
