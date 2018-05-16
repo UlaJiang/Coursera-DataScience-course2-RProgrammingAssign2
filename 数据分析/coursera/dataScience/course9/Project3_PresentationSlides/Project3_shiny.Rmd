@@ -1,0 +1,40 @@
+---
+title: "Prediction of A Diamond Price"
+author: "Ula Jiang"
+date: "16 May 2018"
+output: ioslides_presentation
+---
+
+## Executive Summary
+This project is a part of coursera "Developing Data Products" course.  
+
+It shows the informatiom about diamond dataset in UsingR package. The dataset contains 48 observations of diamonds' carat and relative price.
+
+
+## Functionality
+- This app predicts a diamond price when user gives a specific carat.   
+- It shows a plot of all the observation data points and the predicted fitted line. 
+
+
+## Slide with R Output
+```{r,include=FALSE}
+library(UsingR)
+data("diamond")
+```
+```{r, comment=""}
+head(diamond,10)
+```
+
+
+## Plot of observations and fitted line
+```{r, echo=FALSE}
+model <- lm(price ~ carat, data = diamond)
+modelPred <- predict(model, newdata = data.frame(carat = diamond$carat))
+plot(diamond$carat, diamond$price, 
+         xlab = "Carat of a Diamond",
+         ylab = "Price (in dollar $)", 
+         xlim = c(0.10, 0.40),
+         ylim = c(100, 1250))
+abline(model, col = "red", lwd = 2)
+```
+
